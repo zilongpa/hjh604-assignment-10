@@ -1,6 +1,6 @@
-Please unzip `coco_images_resized.zip` into the repository.
-[Demo](https://youtu.be/tu28k4GX9v8)
-**Only the first 10000 images are transformed when using PCA to prevent the video from being half an hour long.**
+- Please unzip `coco_images_resized.zip` into the repository.
+- **Only the first 10000 images are transformed when using PCA to prevent the video from being half an hour long.**
+- [Demo](https://youtu.be/tu28k4GX9v8)
 
 # Assignment 10: Image Search
 --------------------
