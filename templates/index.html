@@ -1,0 +1,70 @@
+<head>
+  <title>Image Search</title>
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='pico.min.css') }}"
+  />
+  <style>
+    h1,
+    h3 {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container" style="max-width: fit-content">
+    <section>
+      <h1>Image Search</h1>
+      <form action="/" method="post" enctype="multipart/form-data">
+        <fieldset>
+          <label>
+            Image query:
+            <input type="file" name="image" accept="image/*" />
+          </label>
+          <label>
+            Text query:
+            <input name="text" />
+          </label>
+          <label>
+            Hybrid query weight:
+            <input
+              type="number"
+              name="weight"
+              min="0"
+              max="1"
+              value="0.8"
+              step="any"
+            />
+          </label>
+          <label>
+            Select query type:
+            <select name="type" required>
+              <option value="image">Image query</option>
+              <option value="text">Text query</option>
+              <option value="hybrid">Hybrid query</option>
+            </select>
+          </label>
+          <label>
+            K principle components (image query only, set to enable PCA):
+            <input type="number" name="k" min="1" step="1" />
+          </label>
+        </fieldset>
+        <input type="submit" value="Search" />
+      </form>
+    </section>
+    {% if results %}
+    <section>
+      <h3>Top Search Results</h3>
+      {% for result in results %}
+      <article>
+        <img src="{{ result.image }}" />
+        <footer>
+          <p>{{ result.similarity }}</p>
+        </footer>
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+  </main>
+</body>
